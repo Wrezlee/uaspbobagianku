@@ -12,57 +12,60 @@ mycursor = mydb.cursor()
 
 class User:
 
-    def __init__(self):
-        pass
-
+    @staticmethod
     def get_all():
         sql = """
-            SELECT id, username, nama_lengkap, level, password
+            SELECT id, username, password, nama_lengkap, level
             FROM users
         """
         mycursor.execute(sql)
         return mycursor.fetchall()
 
+    @staticmethod
     def search(keyword, level):
-        if level in ("", "Semua Level"):
+        if level == "" or level == "Semua Level":
             sql = """
-                SELECT id, username, nama_lengkap, level, password
+                SELECT id, username, password, nama_lengkap, level
                 FROM users
-                WHERE nama_lengkap LIKE %s OR username LIKE %s
+                WHERE username LIKE %s
+                   OR nama_lengkap LIKE %s
             """
             val = (f"%{keyword}%", f"%{keyword}%")
         else:
             sql = """
-                SELECT id, username, nama_lengkap, level, password
+                SELECT id, username, password, nama_lengkap, level
                 FROM users
-                WHERE (nama_lengkap LIKE %s OR username LIKE %s)
-                AND level = %s
+                WHERE (username LIKE %s OR nama_lengkap LIKE %s)
+                  AND level = %s
             """
             val = (f"%{keyword}%", f"%{keyword}%", level.lower())
 
         mycursor.execute(sql, val)
         return mycursor.fetchall()
 
-    def insert_data(id_user, username, password, nama_lengkap, level):
+    @staticmethod
+    def insert_data(username, password, nama_lengkap, level):
         sql = """
-            INSERT INTO users (id, username, password, nama_lengkap, level)
-            VALUES (%s, %s, %s, %s, %s)
+            INSERT INTO users (username, password, nama_lengkap, level)
+            VALUES (%s, %s, %s, %s)
         """
-        val = (id_user, username, password, nama_lengkap, level.lower())
+        val = (username, password, nama_lengkap, level.lower())
         mycursor.execute(sql, val)
         mydb.commit()
         print(mycursor.rowcount, "User berhasil ditambahkan")
 
-    def select_data_by_id(user_id):
+    @staticmethod
+    def get_by_id(user_id):
         sql = """
-            SELECT id, username, nama_lengkap, level
+            SELECT id, username, password, nama_lengkap, level
             FROM users
             WHERE id = %s
         """
         mycursor.execute(sql, (user_id,))
         return mycursor.fetchone()
 
-    def update_data(user_id, username, nama_lengkap, password, level):
+    @staticmethod
+    def update_data(user_id, username, nama_lengkap, level, password=None):
         if password:
             sql = """
                 UPDATE users
@@ -87,6 +90,7 @@ class User:
         mydb.commit()
         print(mycursor.rowcount, "User berhasil diupdate")
 
+    @staticmethod
     def delete_data(user_id):
         sql = "DELETE FROM users WHERE id=%s"
         mycursor.execute(sql, (user_id,))
