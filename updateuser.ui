@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormUpdateUser</class>
+ <widget class="QWidget" name="FormUpdateUser">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>691</width>
+    <height>797</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Update User</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget { background-color: #121212; color: #E0E0E0; font-family: 'Segoe UI', sans-serif; font-size: 11pt; }
+    QGroupBox { background-color: #1E1E1E; border: 1px solid #333333; border-radius: 12px; margin-top: 24px; font-weight: bold; }
+    QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; color: #82B1FF; }
+    QLabel { color: #B0B0B0; }
+    QLineEdit, QComboBox { background-color: #2D2D2D; border: 1px solid #404040; border-radius: 8px; padding: 8px; color: white; }
+    QLineEdit:focus, QComboBox:focus { border: 2px solid #2962FF; }
+    QPushButton { background-color: #333333; border: 1px solid #444444; border-radius: 8px; padding: 10px; color: white; font-weight: bold; }
+    QPushButton:hover { background-color: #424242; }
+    QPushButton#pushButton_cari, QPushButton#pushButton_update_user { background-color: #2962FF; border: none; }
+    QPushButton#pushButton_cari:hover, QPushButton#pushButton_update_user:hover { background-color: #1565C0; }
+    QPushButton#pushButton_cancel, QPushButton#pushButton_kembali { background-color: #D32F2F; border: none; }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <widget class="QLabel" name="label_title">
+     <property name="styleSheet">
+      <string>font-size: 36px; font-weight: bold; color: white; margin-bottom: 20px;</string>
+     </property>
+     <property name="text">
+      <string>Update User</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_update_user">
+     <property name="title">
+      <string>Edit Data User</string>
+     </property>
+     <layout class="QVBoxLayout" name="formLayout">
+      <item>
+       <widget class="QLabel" name="label_id">
+        <property name="text">
+         <string>Cari ID User:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="searchLayout">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_id">
+          <property name="placeholderText">
+           <string>Masukkan ID...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_cari">
+          <property name="maximumSize">
+           <size>
+            <width>100</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>🔍 Cari</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_nama">
+        <property name="text">
+         <string>Nama Baru:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_nama">
+        <property name="placeholderText">
+         <string>Nama Lengkap</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_username">
+        <property name="text">
+         <string>Username Baru:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_username">
+        <property name="placeholderText">
+         <string>Username</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_password">
+        <property name="text">
+         <string>Password Baru:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_password">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>Kosongkan jika tidak diubah</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_level">
+        <property name="text">
+         <string>Level Akses:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="comboBox_level">
+        <item>
+         <property name="text">
+          <string>User</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Admin</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_update_user">
+        <property name="text">
+         <string>💾 Simpan Perubahan</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="bottomLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_kembali">
+       <property name="text">
+        <string>Kembali</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

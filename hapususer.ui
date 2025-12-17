@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormHapusUser</class>
+ <widget class="QWidget" name="FormHapusUser">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>687</width>
+    <height>795</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Hapus User</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget { background-color: #121212; color: #E0E0E0; font-family: 'Segoe UI', sans-serif; font-size: 11pt; }
+    QGroupBox { background-color: #1E1E1E; border: 1px solid #333333; border-radius: 12px; margin-top: 24px; font-weight: bold; }
+    QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; color: #FF5252; }
+    QLabel { color: #B0B0B0; }
+    QLineEdit { background-color: #2D2D2D; border: 1px solid #404040; border-radius: 8px; padding: 8px; color: #9E9E9E; }
+    QLineEdit:enabled { color: white; }
+    QPushButton { background-color: #333333; border: 1px solid #444444; border-radius: 8px; padding: 10px; color: white; font-weight: bold; }
+    QPushButton#pushButton_cari { background-color: #2962FF; border: none; }
+    QPushButton#pushButton_hapus, QPushButton#pushButton_cancel { background-color: #D32F2F; border: none; }
+    QPushButton#pushButton_hapus:hover { background-color: #B71C1C; }
+    QPushButton#pushButton_kembali { background-color: #2962FF; }
+   </string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <widget class="QLabel" name="label_title">
+     <property name="styleSheet">
+      <string>font-size: 36px; font-weight: bold; color: white; margin-bottom: 20px;</string>
+     </property>
+     <property name="text">
+      <string>Hapus User</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_hapus_user">
+     <property name="title">
+      <string>Konfirmasi Hapus</string>
+     </property>
+     <layout class="QVBoxLayout" name="formLayout">
+      <item>
+       <widget class="QLabel" name="label_id">
+        <property name="text">
+         <string>ID User:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="searchLayout">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_id">
+          <property name="placeholderText">
+           <string>Masukkan ID...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_cari">
+          <property name="text">
+           <string>🔍 Cari</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_nama">
+        <property name="text">
+         <string>Nama:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_nama">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_username">
+        <property name="text">
+         <string>Username:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_username">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_level">
+        <property name="text">
+         <string>Level:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_level">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_hapus">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>🗑 Hapus Permanen</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="bottomLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_kembali">
+       <property name="text">
+        <string>Kembali</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

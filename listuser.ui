@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormListUser</class>
+ <widget class="QMainWindow" name="FormListUser">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>891</width>
+    <height>793</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Daftar User</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+    QWidget { background-color: #121212; color: #E0E0E0; font-family: 'Segoe UI', sans-serif; font-size: 11pt; }
+    
+    /* CARD */
+    QFrame#card { background-color: #1E1E1E; border: 1px solid #333333; border-radius: 12px; }
+    
+    /* INPUTS */
+    QLineEdit, QComboBox { 
+        background-color: #2D2D2D; 
+        border: 1px solid #404040; 
+        border-radius: 8px; 
+        padding: 6px 12px; 
+        color: white; 
+    }
+    QLineEdit:focus, QComboBox:focus { border: 2px solid #2962FF; }
+
+    /* TABLE */
+    QTableWidget { background-color: #1E1E1E; border: 1px solid #333333; gridline-color: #2C2C2C; border-radius: 8px; }
+    QHeaderView::section { background-color: #252525; padding: 8px; border: none; border-bottom: 2px solid #2962FF; color: white; font-weight: bold; }
+    
+    /* BUTTONS */
+    QPushButton { background-color: #333333; border: 1px solid #444444; border-radius: 8px; padding: 10px; color: white; font-weight: bold; }
+    QPushButton:hover { background-color: #424242; }
+    
+    /* ACTION BUTTONS */
+    QPushButton#btnTambah, QPushButton#btnUpdate { background-color: #2962FF; border: none; }
+    QPushButton#btnTambah:hover, QPushButton#btnUpdate:hover { background-color: #1565C0; }
+    QPushButton#btnHapus { background-color: #D32F2F; border: none; }
+    QPushButton#btnHapus:hover { background-color: #B71C1C; }
+    
+    /* SEARCH BUTTON */
+    QPushButton#btnCari { background-color: #2D2D2D; padding: 6px 12px; }
+    QPushButton#btnCari:hover { background-color: #383838; }
+   </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <item>
+     <widget class="QFrame" name="card">
+      <layout class="QVBoxLayout" name="cardLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string>font-size: 18pt; font-weight: bold; color: white; margin-bottom: 10px;</string>
+         </property>
+         <property name="text">
+          <string>👤 Manajemen User</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="filterLayout">
+         <property name="bottomMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_search">
+           <property name="minimumSize">
+            <size>
+             <width>250</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="placeholderText">
+            <string>🔍 Cari Nama atau Username...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_filterLevel">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="placeholderText">
+            <string>Semua Level</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>Semua Level</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Admin</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>User</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnCari">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Cari</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableUser">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="columnCount">
+          <number>5</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>ID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nama</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Username</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Level</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Password</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="buttonLayout">
+         <item>
+          <widget class="QPushButton" name="btnTambah">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>+ Tambah User</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnUpdate">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>✎ Update User</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnHapus">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>🗑 Hapus User</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
