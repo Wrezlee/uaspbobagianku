@@ -103,7 +103,7 @@ class Ui_FormTambahUser(object):
         # PASSWORD
         self.form_layout.addWidget(QtWidgets.QLabel("Password:"))
         self.lineEdit_password = QtWidgets.QLineEdit()
-        self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.Normal)
         self.form_layout.addWidget(self.lineEdit_password)
 
         # LEVEL
