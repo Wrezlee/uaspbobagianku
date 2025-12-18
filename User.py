@@ -3,96 +3,75 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="",
-    database="pbo_uas"
+    password="",      
+    database="pbo_uas" 
 )
 
 mycursor = mydb.cursor()
 
-
 class User:
+    
+    # Konstruktor kosong (opsional)
+    def __init__(self):
+        pass
 
-    @staticmethod
+    # --- CREATE (INSERT) ---
+    def insert_data(username, password, nama_lengkap, level):
+        sql = "INSERT INTO users (username, password, nama_lengkap, level) VALUES (%s, %s, %s, %s)"
+        val = (username, password, nama_lengkap, level)
+        
+        mycursor.execute(sql, val)
+        mydb.commit()
+        print(mycursor.rowcount, "Data user berhasil ditambahkan")
+        return True
+
+    # --- READ (GET ALL) ---
     def get_all():
-        sql = """
-            SELECT id, username, password, nama_lengkap, level
-            FROM users
-        """
+        sql = "SELECT id, username, nama_lengkap, level, password FROM users"
         mycursor.execute(sql)
-        return mycursor.fetchall()
+        result = mycursor.fetchall()
+        return result
 
-    @staticmethod
+    # --- READ (SEARCH) ---
     def search(keyword, level):
-        if level == "" or level == "Semua Level":
-            sql = """
-                SELECT id, username, password, nama_lengkap, level
-                FROM users
-                WHERE username LIKE %s
-                   OR nama_lengkap LIKE %s
-            """
+        if level == "Semua Level" or level == "":
+            sql = "SELECT id, username, nama_lengkap, level, password FROM users WHERE username LIKE %s OR nama_lengkap LIKE %s"
             val = (f"%{keyword}%", f"%{keyword}%")
         else:
-            sql = """
-                SELECT id, username, password, nama_lengkap, level
-                FROM users
-                WHERE (username LIKE %s OR nama_lengkap LIKE %s)
-                  AND level = %s
-            """
-            val = (f"%{keyword}%", f"%{keyword}%", level.lower())
-
+            sql = "SELECT id, username, nama_lengkap, level, password FROM users WHERE (username LIKE %s OR nama_lengkap LIKE %s) AND level = %s"
+            val = (f"%{keyword}%", f"%{keyword}%", level)
+        
         mycursor.execute(sql, val)
         return mycursor.fetchall()
 
-    @staticmethod
-    def insert_data(username, password, nama_lengkap, level):
-        sql = """
-            INSERT INTO users (username, password, nama_lengkap, level)
-            VALUES (%s, %s, %s, %s)
-        """
-        val = (username, password, nama_lengkap, level.lower())
+    # --- READ (GET BY ID - Untuk Update/Hapus) ---
+    def select_data_by_id(id):
+        sql = "SELECT id, username, nama_lengkap, level, password FROM users WHERE id = %s"
+        val = (id,)
         mycursor.execute(sql, val)
-        mydb.commit()
-        print(mycursor.rowcount, "User berhasil ditambahkan")
-
-    @staticmethod
-    def get_by_id(user_id):
-        sql = """
-            SELECT id, username, password, nama_lengkap, level
-            FROM users
-            WHERE id = %s
-        """
-        mycursor.execute(sql, (user_id,))
         return mycursor.fetchone()
 
-    @staticmethod
-    def update_data(user_id, username, nama_lengkap, level, password=None):
+    # --- UPDATE ---
+    def update_data(id, username, nama_lengkap, password, level):
         if password:
-            sql = """
-                UPDATE users
-                SET username=%s,
-                    nama_lengkap=%s,
-                    password=%s,
-                    level=%s
-                WHERE id=%s
-            """
-            val = (username, nama_lengkap, password, level.lower(), user_id)
+            # Jika password diisi, update password juga
+            sql = "UPDATE users SET username=%s, nama_lengkap=%s, password=%s, level=%s WHERE id=%s"
+            val = (username, nama_lengkap, password, level, id)
         else:
-            sql = """
-                UPDATE users
-                SET username=%s,
-                    nama_lengkap=%s,
-                    level=%s
-                WHERE id=%s
-            """
-            val = (username, nama_lengkap, level.lower(), user_id)
+            # Jika password kosong, jangan ubah password lama
+            sql = "UPDATE users SET username=%s, nama_lengkap=%s, level=%s WHERE id=%s"
+            val = (username, nama_lengkap, level, id)
 
         mycursor.execute(sql, val)
         mydb.commit()
-        print(mycursor.rowcount, "User berhasil diupdate")
+        print(mycursor.rowcount, "Data berhasil diupdate")
+        return True
 
-    @staticmethod
-    def delete_data(user_id):
-        sql = "DELETE FROM users WHERE id=%s"
-        mycursor.execute(sql, (user_id,))
+    # --- DELETE ---
+    def delete_data(id):
+        sql = "DELETE FROM users WHERE id = %s"
+        val = (id,)
+        mycursor.execute(sql, val)
         mydb.commit()
-        print(mycursor.rowcount, "User berhasil dihapus")
+        print(mycursor.rowcount, "Data berhasil dihapus")
+        return True
